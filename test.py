@@ -12,28 +12,15 @@ client = mqtt.Client()
 client.connect(broker_address, broker_port)
 
 # Create the message payload as a JSON
-#
-#    "x": 31,
-#    "y": 35,
-#    "z": 36
-#}
+payload = {
+    "latitudine": 42.1256317,
+    "longitudine": 13.6362715,
+    "magnitudo": 3.6
+}
 
-
-def generate_data():
-    latitudine = random.uniform(-90, 90)  # Intervallo per latitudine
-    longitudine = random.uniform(-180, 180)  # Intervallo per longitudine
-    magnitudo = random.uniform(1, 10)  # Intervallo per magnitudo
-
-# Create the message payload as a JSON
-    payload = {
-        "latitudine": latitudine,
-        "longitudine": longitudine,
-        "magnitudo": magnitudo
-    }
-    return json.dumps(payload)
 
 # Convert the payload to JSON string
-message = generate_data()
+message = json.dumps(payload)
 
 # Publish the message to the topic
 topic = "/zone1/accelerometer"
