@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 import random
 import time
 
-mqtt_broker = "mqtt.eclipse.org"
+mqtt_broker = "localhost"
 mqtt_port = 1883
 
 # Identificativo del sensore e topic MQTT
@@ -49,7 +49,7 @@ while True:
 
     # Invia i dati attraverso MQTT
     x = random.randint(0,3)
-    send_data_to_mqtt(data)
+    send_data_to_mqtt(data, x)
 
     # Aspetta per un intervallo di tempo (ad esempio, 5 secondi) prima di generare il prossimo dato
     time.sleep(5)
