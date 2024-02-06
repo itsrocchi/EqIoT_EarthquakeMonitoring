@@ -1,0 +1,12 @@
+FROM python:latest
+
+WORKDIR /workdir
+RUN pip install paho-mqtt
+
+COPY accelerometro.py ./
+COPY geofonoX.py ./
+COPY geofonoY.py ./
+COPY sensors.py ./
+
+CMD ["python","./sensors.py"]
+

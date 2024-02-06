@@ -1,0 +1,65 @@
+version: "1.0"
+
+services:
+  python:
+    build: PythonScripts/
+    container_name: eqiot-python
+    restart: always
+    volumes:
+      - ./python_data:/usr/src/app:rw
+    env_file:
+      - .env
+    depends_on:
+      - mosquitto
+      - influxdb
+      - telegraf
+    network_mode: "host"
+
+  mosquitto:
+    restart: always
+    image: eclipse-mosquitto:latest
+    container_name: eqiot-mosquitto
+    ports:
+      - 1883:1883
+    volumes:
+      - ./Mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:rw
+
+  influxdb:
+    restart: always
+    image: influxdb:latest
+    container_name: eqiot-influxdb
+    env_file:
+      - .env
+    entrypoint: [ "./entrypoint.sh" ]
+    volumes:
+      - ./InfluxdbDB/data:/var/lib/influxdb2:rw
+    ports:
+      - 8086:8086
+
+  telegraf:
+    restart: always
+    container_name: eqiot-telegraf
+    image: telegraf:latest
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:rw
+    env_file:
+      - .env
+    depends_on:
+      - influxdb
+
+  grafana:
+    restart: always
+    image: grafana/grafana-enterprise:latest
+    container_name: eqiot-grafana
+    depends_on:
+      - influxdb
+    ports:
+      - 3000:3000
+
+  node-red:
+    image: nodered/node-red
+    restart: always
+    container_name: eqiot-nodered-1
+    build: NodeRED/
+    ports:
+      - 1880:1880

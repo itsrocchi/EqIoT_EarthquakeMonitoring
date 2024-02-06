@@ -1,0 +1,154 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@8.19.4
+2 info using node@v16.20.2
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 2ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 warn config production Use `--omit=dev` instead.
+8 timing config:load:cli Completed in 6ms
+9 timing config:load:env Completed in 0ms
+10 timing config:load:file:/data/.npmrc Completed in 1ms
+11 timing config:load:project Completed in 4ms
+12 timing config:load:file:/usr/src/node-red/.npmrc Completed in 0ms
+13 timing config:load:user Completed in 1ms
+14 timing config:load:file:/usr/local/etc/npmrc Completed in 1ms
+15 timing config:load:global Completed in 1ms
+16 timing config:load:validate Completed in 1ms
+17 timing config:load:credentials Completed in 0ms
+18 timing config:load:setEnvs Completed in 1ms
+19 timing config:load Completed in 17ms
+20 timing npm:load:configload Completed in 17ms
+21 timing npm:load:mkdirpcache Completed in 1ms
+22 timing npm:load:mkdirplogs Completed in 1ms
+23 verbose title npm install node-red-contrib-amqp@1.0.2
+24 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--production" "--engine-strict" "node-red-contrib-amqp@1.0.2"
+25 timing npm:load:setTitle Completed in 1ms
+26 timing config:load:flatten Completed in 3ms
+27 timing npm:load:display Completed in 5ms
+28 verbose logfile logs-max:10 dir:/data/.npm/_logs
+29 verbose logfile /data/.npm/_logs/2024-02-06T10_56_22_493Z-debug-0.log
+30 timing npm:load:logFile Completed in 5ms
+31 timing npm:load:timers Completed in 0ms
+32 timing npm:load:configScope Completed in 0ms
+33 timing npm:load Completed in 30ms
+34 timing arborist:ctor Completed in 1ms
+35 silly logfile done cleaning log files
+36 timing idealTree:init Completed in 60ms
+37 timing idealTree:userRequests Completed in 2ms
+38 silly idealTree buildDeps
+39 silly fetch manifest node-red-contrib-amqp@1.0.2
+40 timing arborist:ctor Completed in 0ms
+41 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-amqp 1191ms (cache miss)
+42 silly placeDep ROOT node-red-contrib-amqp@1.0.2 OK for: node-red-project@0.0.1 want: 1.0.2
+43 silly fetch manifest amqp-ts@^1.0.0
+44 silly fetch manifest getos@^3.1.1
+45 http fetch GET 200 https://registry.npmjs.org/getos 268ms (cache miss)
+46 http fetch GET 200 https://registry.npmjs.org/amqp-ts 857ms (cache miss)
+47 timing idealTree:#root Completed in 2057ms
+48 silly placeDep ROOT amqp-ts@1.8.0 OK for: node-red-contrib-amqp@1.0.2 want: ^1.0.0
+49 silly placeDep ROOT getos@3.2.1 OK for: node-red-contrib-amqp@1.0.2 want: ^3.1.1
+50 silly fetch manifest @types/node@^12.7.2
+51 silly fetch manifest amqplib@^0.4.1
+52 silly fetch manifest bluebird@^3.3.5
+53 silly fetch manifest winston@^2.2.0
+54 silly fetch manifest async@^3.2.0
+55 http fetch GET 200 https://registry.npmjs.org/amqplib 121ms (cache miss)
+56 http fetch GET 200 https://registry.npmjs.org/bluebird 128ms (cache miss)
+57 http fetch GET 200 https://registry.npmjs.org/async 257ms (cache miss)
+58 http fetch GET 200 https://registry.npmjs.org/@types%2fnode 264ms (cache revalidated)
+59 http fetch GET 200 https://registry.npmjs.org/winston 926ms (cache miss)
+60 timing idealTree:node_modules/node-red-contrib-amqp Completed in 932ms
+61 silly placeDep node_modules/amqp-ts @types/node@12.20.55 OK for: amqp-ts@1.8.0 want: ^12.7.2
+62 silly placeDep ROOT amqplib@0.4.2 OK for: amqp-ts@1.8.0 want: ^0.4.1
+63 silly placeDep ROOT bluebird@3.7.2 OK for: amqp-ts@1.8.0 want: ^3.3.5
+64 silly placeDep ROOT winston@2.4.7 OK for: amqp-ts@1.8.0 want: ^2.2.0
+65 silly fetch manifest bitsyntax@~0.0.4
+66 silly fetch manifest buffer-more-ints@0.0.2
+67 silly fetch manifest readable-stream@1.x >=1.1.9
+68 silly fetch manifest when@~3.6.2
+69 silly fetch manifest async@^2.6.4
+70 silly fetch manifest colors@1.0.x
+71 silly fetch manifest cycle@1.0.x
+72 silly fetch manifest eyes@0.1.x
+73 silly fetch manifest isstream@0.1.x
+74 silly fetch manifest stack-trace@0.0.x
+75 http fetch GET 200 https://registry.npmjs.org/readable-stream 120ms (cache miss)
+76 http fetch GET 200 https://registry.npmjs.org/colors 120ms (cache miss)
+77 http fetch GET 200 https://registry.npmjs.org/when 153ms (cache miss)
+78 http fetch GET 200 https://registry.npmjs.org/stack-trace 232ms (cache miss)
+79 http fetch GET 200 https://registry.npmjs.org/eyes 234ms (cache miss)
+80 http fetch GET 200 https://registry.npmjs.org/isstream 234ms (cache miss)
+81 http fetch GET 200 https://registry.npmjs.org/cycle 245ms (cache miss)
+82 http fetch GET 200 https://registry.npmjs.org/bitsyntax 322ms (cache miss)
+83 http fetch GET 200 https://registry.npmjs.org/buffer-more-ints 325ms (cache miss)
+84 timing idealTree:node_modules/amqp-ts Completed in 332ms
+85 silly placeDep ROOT bitsyntax@0.0.4 OK for: amqplib@0.4.2 want: ~0.0.4
+86 silly placeDep ROOT buffer-more-ints@0.0.2 OK for: amqplib@0.4.2 want: 0.0.2
+87 silly placeDep ROOT readable-stream@1.1.14 OK for: amqplib@0.4.2 want: 1.x >=1.1.9
+88 silly placeDep ROOT when@3.6.4 OK for: amqplib@0.4.2 want: ~3.6.2
+89 silly fetch manifest core-util-is@~1.0.0
+90 silly fetch manifest isarray@0.0.1
+91 silly fetch manifest string_decoder@~0.10.x
+92 http fetch GET 200 https://registry.npmjs.org/isarray 134ms (cache miss)
+93 http fetch GET 200 https://registry.npmjs.org/core-util-is 143ms (cache miss)
+94 http fetch GET 200 https://registry.npmjs.org/string_decoder 145ms (cache miss)
+95 timing idealTree:node_modules/amqplib Completed in 158ms
+96 timing idealTree:node_modules/bitsyntax Completed in 0ms
+97 timing idealTree:node_modules/bluebird Completed in 0ms
+98 timing idealTree:node_modules/buffer-more-ints Completed in 0ms
+99 silly placeDep ROOT async@3.2.5 OK for: getos@3.2.1 want: ^3.2.0
+100 timing idealTree:node_modules/getos Completed in 4ms
+101 timing idealTree:node_modules/async Completed in 0ms
+102 silly placeDep ROOT core-util-is@1.0.3 OK for: readable-stream@1.1.14 want: ~1.0.0
+103 silly placeDep ROOT isarray@0.0.1 OK for: readable-stream@1.1.14 want: 0.0.1
+104 silly placeDep ROOT string_decoder@0.10.31 OK for: readable-stream@1.1.14 want: ~0.10.x
+105 timing idealTree:node_modules/readable-stream Completed in 5ms
+106 timing idealTree:node_modules/core-util-is Completed in 0ms
+107 timing idealTree:node_modules/isarray Completed in 0ms
+108 timing idealTree:node_modules/string_decoder Completed in 0ms
+109 timing idealTree:node_modules/when Completed in 0ms
+110 silly placeDep node_modules/winston async@2.6.4 OK for: winston@2.4.7 want: ^2.6.4
+111 silly placeDep ROOT colors@1.0.3 OK for: winston@2.4.7 want: 1.0.x
+112 silly placeDep ROOT cycle@1.0.3 OK for: winston@2.4.7 want: 1.0.x
+113 silly placeDep ROOT eyes@0.1.8 OK for: winston@2.4.7 want: 0.1.x
+114 silly placeDep ROOT isstream@0.1.2 OK for: winston@2.4.7 want: 0.1.x
+115 silly placeDep ROOT stack-trace@0.0.10 OK for: winston@2.4.7 want: 0.0.x
+116 timing idealTree:node_modules/winston Completed in 8ms
+117 timing idealTree:node_modules/colors Completed in 0ms
+118 timing idealTree:node_modules/cycle Completed in 0ms
+119 timing idealTree:node_modules/eyes Completed in 0ms
+120 timing idealTree:node_modules/isstream Completed in 0ms
+121 timing idealTree:node_modules/stack-trace Completed in 0ms
+122 timing idealTree:node_modules/amqp-ts/node_modules/@types/node Completed in 0ms
+123 timing idealTree:node_modules/winston/node_modules/async Completed in 0ms
+124 timing idealTree:buildDeps Completed in 3497ms
+125 timing idealTree:fixDepFlags Completed in 1ms
+126 timing idealTree Completed in 3563ms
+127 timing command:install Completed in 3569ms
+128 verbose stack Error: Unsupported engine
+128 verbose stack     at checkEngine (/usr/local/lib/node_modules/npm/node_modules/npm-install-checks/lib/index.js:14:25)
+128 verbose stack     at Arborist.[checkEngineAndPlatform] (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:228:11)
+128 verbose stack     at Arborist.buildIdealTree (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:214:42)
+128 verbose stack     at async Promise.all (index 1)
+128 verbose stack     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:154:5)
+128 verbose stack     at async Install.exec (/usr/local/lib/node_modules/npm/lib/commands/install.js:145:5)
+128 verbose stack     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli.js:78:5)
+129 verbose pkgid amqplib@0.4.2
+130 verbose cwd /data
+131 verbose Linux 5.15.133.1-microsoft-standard-WSL2
+132 verbose node v16.20.2
+133 verbose npm  v8.19.4
+134 error code EBADENGINE
+135 error engine Unsupported engine
+136 error engine Not compatible with your version of node/npm: amqplib@0.4.2
+137 error notsup Not compatible with your version of node/npm: amqplib@0.4.2
+137 error notsup Required: {"node":">=0.8 <6 || ^6"}
+137 error notsup Actual:   {"npm":"8.19.4","node":"v16.20.2"}
+138 verbose exit 1
+139 timing npm Completed in 3757ms
+140 verbose unfinished npm timer reify 1707216982681
+141 verbose unfinished npm timer reify:loadTrees 1707216982683
+142 verbose code 1
+143 error A complete log of this run can be found in:
+143 error     /data/.npm/_logs/2024-02-06T10_56_22_493Z-debug-0.log
