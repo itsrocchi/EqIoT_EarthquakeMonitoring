@@ -5,19 +5,19 @@ import random
 import time
 
 locations = {
-    "nord" : {
+    "north" : {
         "lat" : 5.4339,
         "long" : 8.8798
     },
-    "sud" : {
+    "south" : {
         "lat" : 5.4339,
         "long" : 8.8798
     },
-    "ovest" : {
+    "west" : {
         "lat" : 5.4339,
         "long" : 8.8798
     },
-    "est" : {
+    "east" : {
         "lat" : 5.4339,
         "long" : 8.8798
     }
@@ -50,8 +50,8 @@ def generate_send_BadValues(location):
     latitude_topic =  f"/{location}/latitude"
     longitude_topic =  f"/{location}/longitude"
     
-    client.publish = (latitude_topic, f"{lat}")
-    client.publish = (longitude_topic, f"{long}")
+    client.publish(latitude_topic, f"{lat}")
+    client.publish(longitude_topic, f"{long}")
     
     client.publish(accelerometer_topic, f"{acc_x},{acc_y},{acc_z}")
     client.publish(geophone_X_topic, f"{geo_X}")
@@ -77,8 +77,8 @@ def generate_send_NormalValues(location):
     latitude_topic =  f"/{location}/latitude"
     longitude_topic =  f"/{location}/longitude"
     
-    client.publish = (latitude_topic, f"{lat}")
-    client.publish = (longitude_topic, f"{long}")
+    client.publish(latitude_topic, f"{lat}")
+    client.publish(longitude_topic, f"{long}")
     
     client.publish(accelerometer_topic, f"{acc_x},{acc_y},{acc_z}")
     client.publish(geophone_X_topic, f"{geo_X}")

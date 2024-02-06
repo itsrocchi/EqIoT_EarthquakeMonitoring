@@ -12,7 +12,7 @@ def generate_normal_data_acc():
 
 # Funzione per generare dati allarmistici
 def generate_alarm_data_acc():
-    x = random.uniform(0.5 * g, 1 * g)
-    y = random.uniform(0.5 * g, 1 * g)
-    z = random.uniform(0.5 * g, 1 * g)
+    x = random.uniform(0.41 * g, 1 * g)
+    y = random.uniform(0.41 * g, 1 * g)
+    z = random.uniform(0.41 * g, 1 * g)
     return x, y, z
