@@ -59,7 +59,9 @@ services:
   node-red:
     image: nodered/node-red
     restart: always
-    container_name: eqiot-nodered-1
+    container_name: eqiot-nodered
     build: NodeRED/
+    volumes:
+      - ./flows.js:/data/flows.js:rw
     ports:
       - 1880:1880

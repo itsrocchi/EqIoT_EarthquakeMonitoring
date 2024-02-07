@@ -23,7 +23,7 @@ locations = {
     }
 }
 
-mqtt_broker = "localhost"
+mqtt_broker = "host.docker.internal"
 mqtt_port = 1883
 client = mqtt.Client()
 
