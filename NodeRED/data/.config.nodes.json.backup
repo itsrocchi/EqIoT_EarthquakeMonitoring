@@ -1,7 +1,7 @@
 {
     "node-red": {
         "name": "node-red",
-        "version": "3.1.3",
+        "version": "3.1.4",
         "local": false,
         "user": false,
         "nodes": {
@@ -685,6 +685,58 @@
                 "user": false,
                 "module": "node-red-contrib-influxdb",
                 "file": "/data/node_modules/node-red-contrib-influxdb/influxdb.js"
+            }
+        }
+    },
+    "@meowwolf/node-red-contrib-amqp": {
+        "name": "@meowwolf/node-red-contrib-amqp",
+        "version": "2.4.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "amqp-in": {
+                "name": "amqp-in",
+                "types": [
+                    "amqp-in"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@meowwolf/node-red-contrib-amqp",
+                "file": "/data/node_modules/@meowwolf/node-red-contrib-amqp/build/src/nodes/amqp-in.js"
+            },
+            "amqp-out": {
+                "name": "amqp-out",
+                "types": [
+                    "amqp-out"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@meowwolf/node-red-contrib-amqp",
+                "file": "/data/node_modules/@meowwolf/node-red-contrib-amqp/build/src/nodes/amqp-out.js"
+            },
+            "amqp-broker": {
+                "name": "amqp-broker",
+                "types": [
+                    "amqp-broker"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@meowwolf/node-red-contrib-amqp",
+                "file": "/data/node_modules/@meowwolf/node-red-contrib-amqp/build/src/nodes/amqp-broker.js"
+            },
+            "amqp-in-manual-ack": {
+                "name": "amqp-in-manual-ack",
+                "types": [
+                    "amqp-in-manual-ack"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@meowwolf/node-red-contrib-amqp",
+                "file": "/data/node_modules/@meowwolf/node-red-contrib-amqp/build/src/nodes/amqp-in-manual-ack.js"
             }
         }
     }

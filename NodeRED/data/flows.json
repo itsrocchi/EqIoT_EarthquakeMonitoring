@@ -1,0 +1,1520 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "EqIoT Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "03f78facf7e14666",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "host.docker.internal",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "36d198e8524e8b85",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/north/accelerometer",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 500,
+        "wires": [
+            [
+                "0a892acbad8e7c1c"
+            ]
+        ]
+    },
+    {
+        "id": "a4132434ebd3efec",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "0a892acbad8e7c1c",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Magnitudo",
+        "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 580,
+        "wires": [
+            [
+                "941dcbbd113b318e"
+            ]
+        ]
+    },
+    {
+        "id": "5c7e03bbee9ae965",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/north/latitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "662d0431f9db745f"
+            ]
+        ]
+    },
+    {
+        "id": "430a680cb1286f8e",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/north/longitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "80fa36c66834e1f8"
+            ]
+        ]
+    },
+    {
+        "id": "6c3d7ee4a689d1a0",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/north/geophone_X",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 300,
+        "wires": [
+            [
+                "d1487254c8b7d0f3"
+            ]
+        ]
+    },
+    {
+        "id": "c058ca15f41fc28e",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/north/geophone_Y",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "e252a607a8060ad3",
+                "c27a9bba1056f002"
+            ]
+        ]
+    },
+    {
+        "id": "748a1d85dfaccdd3",
+        "type": "join",
+        "z": "f6f2187d.f17ca8",
+        "name": "North",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "5",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 880,
+        "y": 360,
+        "wires": [
+            [
+                "4aad445d70b4d1f1",
+                "a4132434ebd3efec"
+            ]
+        ]
+    },
+    {
+        "id": "e252a607a8060ad3",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_Y",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 240,
+        "wires": [
+            [
+                "748a1d85dfaccdd3"
+            ]
+        ]
+    },
+    {
+        "id": "d1487254c8b7d0f3",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_X",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 300,
+        "wires": [
+            [
+                "748a1d85dfaccdd3"
+            ]
+        ]
+    },
+    {
+        "id": "80fa36c66834e1f8",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "longitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 360,
+        "wires": [
+            [
+                "748a1d85dfaccdd3"
+            ]
+        ]
+    },
+    {
+        "id": "662d0431f9db745f",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "latitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 420,
+        "wires": [
+            [
+                "748a1d85dfaccdd3"
+            ]
+        ]
+    },
+    {
+        "id": "941dcbbd113b318e",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "magnitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 500,
+        "wires": [
+            [
+                "748a1d85dfaccdd3"
+            ]
+        ]
+    },
+    {
+        "id": "4aad445d70b4d1f1",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 1",
+        "func": "msg.topic = \"North\"\nmsg.payload = {\n    \"location\": \"North\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 360,
+        "wires": [
+            [
+                "e7d4cfdd5acaabe5"
+            ]
+        ]
+    },
+    {
+        "id": "6a3debcefcf3fc95",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/south/accelerometer",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 220,
+        "y": 960,
+        "wires": [
+            [
+                "924274056d1d358a"
+            ]
+        ]
+    },
+    {
+        "id": "d3ac9f173074af75",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "924274056d1d358a",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Magnitudo",
+        "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1040,
+        "wires": [
+            [
+                "94930c483fe5798a"
+            ]
+        ]
+    },
+    {
+        "id": "466cda0192fd7aca",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/south/latitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 880,
+        "wires": [
+            [
+                "2b4879933c9c70c8"
+            ]
+        ]
+    },
+    {
+        "id": "dab2f59b9ff130b7",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/south/longitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 820,
+        "wires": [
+            [
+                "d877fa5e7b16dc4f"
+            ]
+        ]
+    },
+    {
+        "id": "54dfc210e187df82",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/south/geophone_X",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 760,
+        "wires": [
+            [
+                "c8e8d8ca5027117c"
+            ]
+        ]
+    },
+    {
+        "id": "2ce4990be4c54818",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/south/geophone_Y",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 700,
+        "wires": [
+            [
+                "70367745232f8eed"
+            ]
+        ]
+    },
+    {
+        "id": "97a48f9d2bab444e",
+        "type": "join",
+        "z": "f6f2187d.f17ca8",
+        "name": "South",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "5",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 880,
+        "y": 820,
+        "wires": [
+            [
+                "c54790a2bf3d49db",
+                "d3ac9f173074af75"
+            ]
+        ]
+    },
+    {
+        "id": "70367745232f8eed",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_Y",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 700,
+        "wires": [
+            [
+                "97a48f9d2bab444e"
+            ]
+        ]
+    },
+    {
+        "id": "c8e8d8ca5027117c",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_X",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 760,
+        "wires": [
+            [
+                "97a48f9d2bab444e"
+            ]
+        ]
+    },
+    {
+        "id": "d877fa5e7b16dc4f",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "longitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 820,
+        "wires": [
+            [
+                "97a48f9d2bab444e"
+            ]
+        ]
+    },
+    {
+        "id": "2b4879933c9c70c8",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "latitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 880,
+        "wires": [
+            [
+                "97a48f9d2bab444e"
+            ]
+        ]
+    },
+    {
+        "id": "94930c483fe5798a",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "magnitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 960,
+        "wires": [
+            [
+                "97a48f9d2bab444e"
+            ]
+        ]
+    },
+    {
+        "id": "c54790a2bf3d49db",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 2",
+        "func": "msg.topic = \"South\"\nmsg.payload = {\n    \"location\": \"South\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 820,
+        "wires": [
+            [
+                "e7d4cfdd5acaabe5"
+            ]
+        ]
+    },
+    {
+        "id": "f7d75717a2067815",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 3",
+        "func": "msg.topic = \"East\"\nmsg.payload = {\n    \"location\": \"East\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 1360,
+        "wires": [
+            [
+                "e7d4cfdd5acaabe5"
+            ]
+        ]
+    },
+    {
+        "id": "63c63948bce9cbf6",
+        "type": "join",
+        "z": "f6f2187d.f17ca8",
+        "name": "East",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "5",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 870,
+        "y": 1360,
+        "wires": [
+            [
+                "f7d75717a2067815",
+                "c2e596e220885141"
+            ]
+        ]
+    },
+    {
+        "id": "8aefd4c03c176ea5",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_Y",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1240,
+        "wires": [
+            [
+                "63c63948bce9cbf6"
+            ]
+        ]
+    },
+    {
+        "id": "bacbc3b168be1739",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_X",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1300,
+        "wires": [
+            [
+                "63c63948bce9cbf6"
+            ]
+        ]
+    },
+    {
+        "id": "6c513cc8aa6bad94",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "longitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1360,
+        "wires": [
+            [
+                "63c63948bce9cbf6"
+            ]
+        ]
+    },
+    {
+        "id": "75b450c6f6826244",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "latitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1420,
+        "wires": [
+            [
+                "63c63948bce9cbf6"
+            ]
+        ]
+    },
+    {
+        "id": "02df357a5cb0b940",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "magnitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1500,
+        "wires": [
+            [
+                "63c63948bce9cbf6"
+            ]
+        ]
+    },
+    {
+        "id": "c2e596e220885141",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "b384bdfe1bd26edb",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/east/geophone_Y",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 1240,
+        "wires": [
+            [
+                "8aefd4c03c176ea5"
+            ]
+        ]
+    },
+    {
+        "id": "d04350ad955d9c86",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/east/geophone_X",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 1300,
+        "wires": [
+            [
+                "bacbc3b168be1739"
+            ]
+        ]
+    },
+    {
+        "id": "eeaf78c647de2cdf",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/east/longitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1360,
+        "wires": [
+            [
+                "6c513cc8aa6bad94"
+            ]
+        ]
+    },
+    {
+        "id": "cfda0e9a330138c1",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/east/latitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 1420,
+        "wires": [
+            [
+                "75b450c6f6826244"
+            ]
+        ]
+    },
+    {
+        "id": "5c47cbd4e70e193e",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Magnitudo",
+        "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1580,
+        "wires": [
+            [
+                "02df357a5cb0b940"
+            ]
+        ]
+    },
+    {
+        "id": "3f0273b539e27b41",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/east/accelerometer",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 1500,
+        "wires": [
+            [
+                "5c47cbd4e70e193e"
+            ]
+        ]
+    },
+    {
+        "id": "c2d393f23d9f6f7c",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 4",
+        "func": "msg.topic = \"West\"\nmsg.payload = {\n     \"location\": \"West\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 1880,
+        "wires": [
+            [
+                "e7d4cfdd5acaabe5"
+            ]
+        ]
+    },
+    {
+        "id": "a30fa097eab86067",
+        "type": "join",
+        "z": "f6f2187d.f17ca8",
+        "name": "West",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "5",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 870,
+        "y": 1880,
+        "wires": [
+            [
+                "c2d393f23d9f6f7c",
+                "71b0671edeac24ff"
+            ]
+        ]
+    },
+    {
+        "id": "71b0671edeac24ff",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "4ae9fcbdb51c496d",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_Y",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1760,
+        "wires": [
+            [
+                "a30fa097eab86067"
+            ]
+        ]
+    },
+    {
+        "id": "64f379cc7ee860ad",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "geophone_X",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1820,
+        "wires": [
+            [
+                "a30fa097eab86067"
+            ]
+        ]
+    },
+    {
+        "id": "fd84e02eadaae2eb",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "longitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1880,
+        "wires": [
+            [
+                "a30fa097eab86067"
+            ]
+        ]
+    },
+    {
+        "id": "cf62d9b213e19b1e",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "latitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1940,
+        "wires": [
+            [
+                "a30fa097eab86067"
+            ]
+        ]
+    },
+    {
+        "id": "3704cc2566274d0e",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "magnitude",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 2020,
+        "wires": [
+            [
+                "a30fa097eab86067"
+            ]
+        ]
+    },
+    {
+        "id": "bb0713749b2985d5",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/west/geophone_Y",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 1760,
+        "wires": [
+            [
+                "4ae9fcbdb51c496d"
+            ]
+        ]
+    },
+    {
+        "id": "0fdb6c3b8a1942b3",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/west/geophone_X",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 1820,
+        "wires": [
+            [
+                "64f379cc7ee860ad"
+            ]
+        ]
+    },
+    {
+        "id": "78644b276149983a",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/west/longitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1880,
+        "wires": [
+            [
+                "fd84e02eadaae2eb"
+            ]
+        ]
+    },
+    {
+        "id": "e96e3f1a5d08cf32",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/west/latitude",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 1940,
+        "wires": [
+            [
+                "cf62d9b213e19b1e"
+            ]
+        ]
+    },
+    {
+        "id": "5837c38bcac66613",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Magnitudo",
+        "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 2100,
+        "wires": [
+            [
+                "3704cc2566274d0e"
+            ]
+        ]
+    },
+    {
+        "id": "479cc731ac31627d",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/west/accelerometer",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "03f78facf7e14666",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 2020,
+        "wires": [
+            [
+                "5837c38bcac66613"
+            ]
+        ]
+    },
+    {
+        "id": "c27a9bba1056f002",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e7d4cfdd5acaabe5",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "SensorData",
+        "topic": "telegraf/SensorData",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "03f78facf7e14666",
+        "x": 1530,
+        "y": 1180,
+        "wires": []
+    }
+]

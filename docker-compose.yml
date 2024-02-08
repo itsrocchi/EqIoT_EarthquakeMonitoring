@@ -32,7 +32,7 @@ services:
       - .env
     entrypoint: [ "./entrypoint.sh" ]
     volumes:
-      - ./InfluxdbDB/data:/var/lib/influxdb2:rw
+      - ./InfluxDB/data:/var/lib/influxdb2:rw
     ports:
       - 8086:8086
 
@@ -61,7 +61,5 @@ services:
     restart: always
     container_name: eqiot-nodered
     build: NodeRED/
-    volumes:
-      - ./flows.js:/data/flows.js:rw
     ports:
       - 1880:1880
