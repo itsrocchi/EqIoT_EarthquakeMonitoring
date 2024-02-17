@@ -59,9 +59,8 @@ services:
       - 3000:3000
 
   node-red:
-    image: nodered/node-red
     restart: always
     container_name: eqiot-nodered
-    build: NodeRED/
+    build: ./NodeRED/
     ports:
       - 1880:1880
