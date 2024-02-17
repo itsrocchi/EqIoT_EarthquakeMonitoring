@@ -1,0 +1,8 @@
+{{ define "telegram_message" }}
+  <b>🚨 Earthquake detected! 🚨</b>
+  {{ range .Alerts.Firing }} {{ template "telegram_alert_firing" .}} {{ end }} {{ end }}
+
+{{ define "telegram_alert_firing" }}
+  Magnitude: <b>{{ printf "%.2f" .Values.B }}</b>
+  Location: <b>{{ .Labels.location }}</b>
+{{ end }}

@@ -1,8 +1,8 @@
 [
     {
-        "id": "f6f2187d.f17ca8",
+        "id": "c894a765e68d549e",
         "type": "tab",
-        "label": "EqIoT Flow",
+        "label": "Flow 1",
         "disabled": false,
         "info": ""
     },
@@ -38,9 +38,9 @@
         "sessionExpiry": ""
     },
     {
-        "id": "36d198e8524e8b85",
+        "id": "181b902293a1da42",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/north/accelerometer",
         "qos": "2",
@@ -54,14 +54,14 @@
         "y": 500,
         "wires": [
             [
-                "0a892acbad8e7c1c"
+                "1c50238b5217de85"
             ]
         ]
     },
     {
-        "id": "a4132434ebd3efec",
+        "id": "62cad5f375f1085a",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
@@ -76,9 +76,9 @@
         "wires": []
     },
     {
-        "id": "0a892acbad8e7c1c",
+        "id": "1c50238b5217de85",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "Magnitudo",
         "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
         "outputs": 1,
@@ -91,14 +91,14 @@
         "y": 580,
         "wires": [
             [
-                "941dcbbd113b318e"
+                "e95521741091d3fb"
             ]
         ]
     },
     {
-        "id": "5c7e03bbee9ae965",
+        "id": "b66144c8daedd09e",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/north/latitude",
         "qos": "2",
@@ -112,14 +112,14 @@
         "y": 420,
         "wires": [
             [
-                "662d0431f9db745f"
+                "f3c09e90c4a1de8f"
             ]
         ]
     },
     {
-        "id": "430a680cb1286f8e",
+        "id": "5605880c5b1c13f6",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/north/longitude",
         "qos": "2",
@@ -133,14 +133,14 @@
         "y": 360,
         "wires": [
             [
-                "80fa36c66834e1f8"
+                "b6ee730411852e9b"
             ]
         ]
     },
     {
-        "id": "6c3d7ee4a689d1a0",
+        "id": "0388274d4f957881",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/north/geophone_X",
         "qos": "2",
@@ -154,14 +154,14 @@
         "y": 300,
         "wires": [
             [
-                "d1487254c8b7d0f3"
+                "e6953a0cc2287aa8"
             ]
         ]
     },
     {
-        "id": "c058ca15f41fc28e",
+        "id": "68815c94e28afc23",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/north/geophone_Y",
         "qos": "2",
@@ -175,15 +175,15 @@
         "y": 240,
         "wires": [
             [
-                "e252a607a8060ad3",
-                "c27a9bba1056f002"
+                "01ba64fc83645282",
+                "4ec48bb507ab1227"
             ]
         ]
     },
     {
-        "id": "748a1d85dfaccdd3",
+        "id": "9a04251d181304ab",
         "type": "join",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "North",
         "mode": "custom",
         "build": "object",
@@ -204,15 +204,15 @@
         "y": 360,
         "wires": [
             [
-                "4aad445d70b4d1f1",
-                "a4132434ebd3efec"
+                "87bb59527464b741",
+                "62cad5f375f1085a"
             ]
         ]
     },
     {
-        "id": "e252a607a8060ad3",
+        "id": "01ba64fc83645282",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -239,14 +239,14 @@
         "y": 240,
         "wires": [
             [
-                "748a1d85dfaccdd3"
+                "9a04251d181304ab"
             ]
         ]
     },
     {
-        "id": "d1487254c8b7d0f3",
+        "id": "e6953a0cc2287aa8",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -273,14 +273,14 @@
         "y": 300,
         "wires": [
             [
-                "748a1d85dfaccdd3"
+                "9a04251d181304ab"
             ]
         ]
     },
     {
-        "id": "80fa36c66834e1f8",
+        "id": "b6ee730411852e9b",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -307,14 +307,14 @@
         "y": 360,
         "wires": [
             [
-                "748a1d85dfaccdd3"
+                "9a04251d181304ab"
             ]
         ]
     },
     {
-        "id": "662d0431f9db745f",
+        "id": "f3c09e90c4a1de8f",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -341,14 +341,14 @@
         "y": 420,
         "wires": [
             [
-                "748a1d85dfaccdd3"
+                "9a04251d181304ab"
             ]
         ]
     },
     {
-        "id": "941dcbbd113b318e",
+        "id": "e95521741091d3fb",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -375,14 +375,14 @@
         "y": 500,
         "wires": [
             [
-                "748a1d85dfaccdd3"
+                "9a04251d181304ab"
             ]
         ]
     },
     {
-        "id": "4aad445d70b4d1f1",
+        "id": "87bb59527464b741",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "function 1",
         "func": "msg.topic = \"North\"\nmsg.payload = {\n    \"location\": \"North\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
         "outputs": 1,
@@ -395,14 +395,14 @@
         "y": 360,
         "wires": [
             [
-                "e7d4cfdd5acaabe5"
+                "227212ca5ad03d1f"
             ]
         ]
     },
     {
-        "id": "6a3debcefcf3fc95",
+        "id": "1cead6daab3d0281",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/south/accelerometer",
         "qos": "2",
@@ -416,14 +416,14 @@
         "y": 960,
         "wires": [
             [
-                "924274056d1d358a"
+                "fbe51bd313a077e5"
             ]
         ]
     },
     {
-        "id": "d3ac9f173074af75",
+        "id": "0d88bb169166cc1d",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "debug 3",
         "active": true,
         "tosidebar": true,
@@ -438,9 +438,9 @@
         "wires": []
     },
     {
-        "id": "924274056d1d358a",
+        "id": "fbe51bd313a077e5",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "Magnitudo",
         "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
         "outputs": 1,
@@ -453,14 +453,14 @@
         "y": 1040,
         "wires": [
             [
-                "94930c483fe5798a"
+                "148f2b8454e8dc3c"
             ]
         ]
     },
     {
-        "id": "466cda0192fd7aca",
+        "id": "a4147eca0d67a685",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/south/latitude",
         "qos": "2",
@@ -474,14 +474,14 @@
         "y": 880,
         "wires": [
             [
-                "2b4879933c9c70c8"
+                "60c986f75689a171"
             ]
         ]
     },
     {
-        "id": "dab2f59b9ff130b7",
+        "id": "ea1a5d497ae33572",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/south/longitude",
         "qos": "2",
@@ -495,14 +495,14 @@
         "y": 820,
         "wires": [
             [
-                "d877fa5e7b16dc4f"
+                "478e6eb8e168638a"
             ]
         ]
     },
     {
-        "id": "54dfc210e187df82",
+        "id": "8a3777f42c419159",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/south/geophone_X",
         "qos": "2",
@@ -516,14 +516,14 @@
         "y": 760,
         "wires": [
             [
-                "c8e8d8ca5027117c"
+                "c5f136d6f7128a94"
             ]
         ]
     },
     {
-        "id": "2ce4990be4c54818",
+        "id": "0728f23e0da228f2",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/south/geophone_Y",
         "qos": "2",
@@ -537,14 +537,14 @@
         "y": 700,
         "wires": [
             [
-                "70367745232f8eed"
+                "2a961764b387dbb2"
             ]
         ]
     },
     {
-        "id": "97a48f9d2bab444e",
+        "id": "c4d4706fbf142e55",
         "type": "join",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "South",
         "mode": "custom",
         "build": "object",
@@ -565,15 +565,15 @@
         "y": 820,
         "wires": [
             [
-                "c54790a2bf3d49db",
-                "d3ac9f173074af75"
+                "ad0ebef0ae074ddf",
+                "0d88bb169166cc1d"
             ]
         ]
     },
     {
-        "id": "70367745232f8eed",
+        "id": "2a961764b387dbb2",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -600,14 +600,14 @@
         "y": 700,
         "wires": [
             [
-                "97a48f9d2bab444e"
+                "c4d4706fbf142e55"
             ]
         ]
     },
     {
-        "id": "c8e8d8ca5027117c",
+        "id": "c5f136d6f7128a94",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -634,14 +634,14 @@
         "y": 760,
         "wires": [
             [
-                "97a48f9d2bab444e"
+                "c4d4706fbf142e55"
             ]
         ]
     },
     {
-        "id": "d877fa5e7b16dc4f",
+        "id": "478e6eb8e168638a",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -668,14 +668,14 @@
         "y": 820,
         "wires": [
             [
-                "97a48f9d2bab444e"
+                "c4d4706fbf142e55"
             ]
         ]
     },
     {
-        "id": "2b4879933c9c70c8",
+        "id": "60c986f75689a171",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -702,14 +702,14 @@
         "y": 880,
         "wires": [
             [
-                "97a48f9d2bab444e"
+                "c4d4706fbf142e55"
             ]
         ]
     },
     {
-        "id": "94930c483fe5798a",
+        "id": "148f2b8454e8dc3c",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -736,14 +736,14 @@
         "y": 960,
         "wires": [
             [
-                "97a48f9d2bab444e"
+                "c4d4706fbf142e55"
             ]
         ]
     },
     {
-        "id": "c54790a2bf3d49db",
+        "id": "ad0ebef0ae074ddf",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "function 2",
         "func": "msg.topic = \"South\"\nmsg.payload = {\n    \"location\": \"South\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
         "outputs": 1,
@@ -756,14 +756,14 @@
         "y": 820,
         "wires": [
             [
-                "e7d4cfdd5acaabe5"
+                "227212ca5ad03d1f"
             ]
         ]
     },
     {
-        "id": "f7d75717a2067815",
+        "id": "3767f94b4bae774b",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "function 3",
         "func": "msg.topic = \"East\"\nmsg.payload = {\n    \"location\": \"East\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
         "outputs": 1,
@@ -776,14 +776,14 @@
         "y": 1360,
         "wires": [
             [
-                "e7d4cfdd5acaabe5"
+                "227212ca5ad03d1f"
             ]
         ]
     },
     {
-        "id": "63c63948bce9cbf6",
+        "id": "f8c1a5bc89c8ff07",
         "type": "join",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "East",
         "mode": "custom",
         "build": "object",
@@ -804,15 +804,15 @@
         "y": 1360,
         "wires": [
             [
-                "f7d75717a2067815",
-                "c2e596e220885141"
+                "3767f94b4bae774b",
+                "7787fb00616e4695"
             ]
         ]
     },
     {
-        "id": "8aefd4c03c176ea5",
+        "id": "1933e4ac8902b8de",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -839,14 +839,14 @@
         "y": 1240,
         "wires": [
             [
-                "63c63948bce9cbf6"
+                "f8c1a5bc89c8ff07"
             ]
         ]
     },
     {
-        "id": "bacbc3b168be1739",
+        "id": "1303795dc804f334",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -873,14 +873,14 @@
         "y": 1300,
         "wires": [
             [
-                "63c63948bce9cbf6"
+                "f8c1a5bc89c8ff07"
             ]
         ]
     },
     {
-        "id": "6c513cc8aa6bad94",
+        "id": "46071cf04f3e18da",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -907,14 +907,14 @@
         "y": 1360,
         "wires": [
             [
-                "63c63948bce9cbf6"
+                "f8c1a5bc89c8ff07"
             ]
         ]
     },
     {
-        "id": "75b450c6f6826244",
+        "id": "24238ba36f2707a6",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -941,14 +941,14 @@
         "y": 1420,
         "wires": [
             [
-                "63c63948bce9cbf6"
+                "f8c1a5bc89c8ff07"
             ]
         ]
     },
     {
-        "id": "02df357a5cb0b940",
+        "id": "e3a31b29d61ff390",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -975,14 +975,14 @@
         "y": 1500,
         "wires": [
             [
-                "63c63948bce9cbf6"
+                "f8c1a5bc89c8ff07"
             ]
         ]
     },
     {
-        "id": "c2e596e220885141",
+        "id": "7787fb00616e4695",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "debug 4",
         "active": true,
         "tosidebar": true,
@@ -997,9 +997,9 @@
         "wires": []
     },
     {
-        "id": "b384bdfe1bd26edb",
+        "id": "1e28bac3044ee919",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/east/geophone_Y",
         "qos": "2",
@@ -1013,14 +1013,14 @@
         "y": 1240,
         "wires": [
             [
-                "8aefd4c03c176ea5"
+                "1933e4ac8902b8de"
             ]
         ]
     },
     {
-        "id": "d04350ad955d9c86",
+        "id": "c570e4f82cabcc07",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/east/geophone_X",
         "qos": "2",
@@ -1034,14 +1034,14 @@
         "y": 1300,
         "wires": [
             [
-                "bacbc3b168be1739"
+                "1303795dc804f334"
             ]
         ]
     },
     {
-        "id": "eeaf78c647de2cdf",
+        "id": "628cf6d666824ff6",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/east/longitude",
         "qos": "2",
@@ -1055,14 +1055,14 @@
         "y": 1360,
         "wires": [
             [
-                "6c513cc8aa6bad94"
+                "46071cf04f3e18da"
             ]
         ]
     },
     {
-        "id": "cfda0e9a330138c1",
+        "id": "ba4adef8b4d72855",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/east/latitude",
         "qos": "2",
@@ -1076,14 +1076,14 @@
         "y": 1420,
         "wires": [
             [
-                "75b450c6f6826244"
+                "24238ba36f2707a6"
             ]
         ]
     },
     {
-        "id": "5c47cbd4e70e193e",
+        "id": "16e7657933aa31f2",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "Magnitudo",
         "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
         "outputs": 1,
@@ -1096,14 +1096,14 @@
         "y": 1580,
         "wires": [
             [
-                "02df357a5cb0b940"
+                "e3a31b29d61ff390"
             ]
         ]
     },
     {
-        "id": "3f0273b539e27b41",
+        "id": "df762e465cc1f53e",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/east/accelerometer",
         "qos": "2",
@@ -1117,14 +1117,14 @@
         "y": 1500,
         "wires": [
             [
-                "5c47cbd4e70e193e"
+                "16e7657933aa31f2"
             ]
         ]
     },
     {
-        "id": "c2d393f23d9f6f7c",
+        "id": "530e8d3bbcfca4f3",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "function 4",
         "func": "msg.topic = \"West\"\nmsg.payload = {\n     \"location\": \"West\",\n    \"latitude\": msg.payload.latitude,\n    \"longitude\": msg.payload.longitude,\n    \"magnitude\": msg.payload.magnitude,\n    \"geophone_X\": msg.payload.geophone_X,\n    \"geophone_Y\": msg.payload.geophone_Y\n}\nreturn msg;",
         "outputs": 1,
@@ -1137,14 +1137,14 @@
         "y": 1880,
         "wires": [
             [
-                "e7d4cfdd5acaabe5"
+                "227212ca5ad03d1f"
             ]
         ]
     },
     {
-        "id": "a30fa097eab86067",
+        "id": "32d377c181351773",
         "type": "join",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "West",
         "mode": "custom",
         "build": "object",
@@ -1165,15 +1165,15 @@
         "y": 1880,
         "wires": [
             [
-                "c2d393f23d9f6f7c",
-                "71b0671edeac24ff"
+                "530e8d3bbcfca4f3",
+                "8bd7d3f58c6b7f17"
             ]
         ]
     },
     {
-        "id": "71b0671edeac24ff",
+        "id": "8bd7d3f58c6b7f17",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "debug 5",
         "active": true,
         "tosidebar": true,
@@ -1188,9 +1188,9 @@
         "wires": []
     },
     {
-        "id": "4ae9fcbdb51c496d",
+        "id": "a1ac78ef671123e6",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -1217,14 +1217,14 @@
         "y": 1760,
         "wires": [
             [
-                "a30fa097eab86067"
+                "32d377c181351773"
             ]
         ]
     },
     {
-        "id": "64f379cc7ee860ad",
+        "id": "59b2f91dc4065abe",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -1251,14 +1251,14 @@
         "y": 1820,
         "wires": [
             [
-                "a30fa097eab86067"
+                "32d377c181351773"
             ]
         ]
     },
     {
-        "id": "fd84e02eadaae2eb",
+        "id": "3331fd0d234c969d",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -1285,14 +1285,14 @@
         "y": 1880,
         "wires": [
             [
-                "a30fa097eab86067"
+                "32d377c181351773"
             ]
         ]
     },
     {
-        "id": "cf62d9b213e19b1e",
+        "id": "b408a2e3a7e15140",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -1319,14 +1319,14 @@
         "y": 1940,
         "wires": [
             [
-                "a30fa097eab86067"
+                "32d377c181351773"
             ]
         ]
     },
     {
-        "id": "3704cc2566274d0e",
+        "id": "0b971bedad02ea25",
         "type": "change",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "rules": [
             {
@@ -1353,14 +1353,14 @@
         "y": 2020,
         "wires": [
             [
-                "a30fa097eab86067"
+                "32d377c181351773"
             ]
         ]
     },
     {
-        "id": "bb0713749b2985d5",
+        "id": "26dc64fcdb44dbfe",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/west/geophone_Y",
         "qos": "2",
@@ -1374,14 +1374,14 @@
         "y": 1760,
         "wires": [
             [
-                "4ae9fcbdb51c496d"
+                "a1ac78ef671123e6"
             ]
         ]
     },
     {
-        "id": "0fdb6c3b8a1942b3",
+        "id": "65c3be5f817b82db",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/west/geophone_X",
         "qos": "2",
@@ -1395,14 +1395,14 @@
         "y": 1820,
         "wires": [
             [
-                "64f379cc7ee860ad"
+                "59b2f91dc4065abe"
             ]
         ]
     },
     {
-        "id": "78644b276149983a",
+        "id": "2dfc184880ab947f",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/west/longitude",
         "qos": "2",
@@ -1416,14 +1416,14 @@
         "y": 1880,
         "wires": [
             [
-                "fd84e02eadaae2eb"
+                "3331fd0d234c969d"
             ]
         ]
     },
     {
-        "id": "e96e3f1a5d08cf32",
+        "id": "364ff33cf8e8a5d6",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/west/latitude",
         "qos": "2",
@@ -1437,14 +1437,14 @@
         "y": 1940,
         "wires": [
             [
-                "cf62d9b213e19b1e"
+                "b408a2e3a7e15140"
             ]
         ]
     },
     {
-        "id": "5837c38bcac66613",
+        "id": "1cc224795f085396",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "Magnitudo",
         "func": "console.log(msg.payload);\n\nvar arrayDiStringhe = msg.payload.split(',');\n\n// Converti le stringhe in numeri\nvar x = parseFloat(arrayDiStringhe[0]);\nvar y = parseFloat(arrayDiStringhe[1]);\nvar z = parseFloat(arrayDiStringhe[2]);\n\nconsole.log(x,y,z)\n\nvar risultato = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));\n\nconsole.log(risultato);\n\n// Funzione per mappare un valore da un intervallo all'altro\nfunction mapValue(value, fromMin, fromMax, toMin, toMax) {\n  // Calcola la percentuale del valore nell'intervallo di partenza\n  const percentage = (value - fromMin) / (fromMax - fromMin);\n\n  // Applica la percentuale nell'intervallo di destinazione\n  const mappedValue = percentage * (toMax - toMin) + toMin;\n\n  // Restituisci il valore mappato\n  return mappedValue;\n}\n\n\nconst risultato_fin = mapValue(risultato, 2.2 , 19.5 , 1.0 , 10.0 );\nconsole.log(risultato_fin)\nmsg.payload = risultato_fin;\n\nreturn msg;",
         "outputs": 1,
@@ -1457,14 +1457,14 @@
         "y": 2100,
         "wires": [
             [
-                "3704cc2566274d0e"
+                "0b971bedad02ea25"
             ]
         ]
     },
     {
-        "id": "479cc731ac31627d",
+        "id": "4e5b76d4299a3152",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "",
         "topic": "/west/accelerometer",
         "qos": "2",
@@ -1478,14 +1478,14 @@
         "y": 2020,
         "wires": [
             [
-                "5837c38bcac66613"
+                "1cc224795f085396"
             ]
         ]
     },
     {
-        "id": "c27a9bba1056f002",
+        "id": "4ec48bb507ab1227",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "debug 6",
         "active": true,
         "tosidebar": true,
@@ -1500,9 +1500,9 @@
         "wires": []
     },
     {
-        "id": "e7d4cfdd5acaabe5",
+        "id": "227212ca5ad03d1f",
         "type": "mqtt out",
-        "z": "f6f2187d.f17ca8",
+        "z": "c894a765e68d549e",
         "name": "SensorData",
         "topic": "telegraf/SensorData",
         "qos": "2",
